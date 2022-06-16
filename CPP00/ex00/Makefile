@@ -3,8 +3,12 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98
 SRCS = megaphone.cpp
 OBJ = $(SRCS:.cpp=.o)
 
+
+.cpp.o:
+	g++ -c $< -o $@
+	
 $(NAME): $(OBJ)
-	c++ $(CFLAGS) $(OBJ) -o $(NAME)
+	c++ $(CFLAGS) -o $(OBJ) $(NAME)
 
 all: $(NAME)
 
