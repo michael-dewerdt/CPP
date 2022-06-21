@@ -12,36 +12,34 @@ PhoneBook::~PhoneBook(void)
     std::cout << "PhoneBook OFF." << std::endl;
 }
 
-
-void    add_contact(Contact contact, int i)
+void    add_contact(Contact contact, int i, PhoneBook Phonebook)
 {
-    this->contact[i] = contact;
+    Phonebook.contact[i] = contact;
     if (i = 7)
-        this->full = 1;
+       Phonebook.full = 1;
 }
 
-void    display_all_contacts(int index)
+void    display_all_contacts(PhoneBook Phonebook, int index)
 {
     std::cout << "     index";
-    std::cout << "|"
+    std::cout << "|";
     std::cout << " firstname";
-    std::cout << "|"
+    std::cout << "|";
     std::cout << "  lastname";
-    std::cout << "|"
+    std::cout << "|";
     std::cout << "  nickname"; 
-    std::cout << "|"
+    std::cout << "|";
     for (int i = 0; i < index; i++)
     {
         std::cout << i << std::endl; 
-        std::cout << this->contact[i].firstname << std::endl;
-        std::cout << this->contact[i].lastname << std::endl;
-        std::cout << this->contact[i].nickname << std::endl;
+        std::cout << Phonebook.contact[i].firstname << std::endl;
+        std::cout << Phonebook.contact[i].lastname << std::endl;
+        std::cout << Phonebook.contact[i].nickname << std::endl;
     }
-	else if (index == 0) {
+	if (index == 0) {
 		std::cout << "No contact found" << std::endl;
 		return ;
 	}
-	i++;
 }
 
 void    display_one_contact(int i)

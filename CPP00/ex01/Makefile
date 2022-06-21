@@ -1,26 +1,25 @@
-NAME = PhoneBook
-CFLAGS = -Wall -Wextra -Werror -std=c++98
-SRCS = PhoneBook.cpp Contact.cpp
-INCLUDES = PhoneBook.hpp
-OBJ = $(SRCS:.cpp=.o)
+SRCS			= main.cpp Contact.cpp PhoneBook.cpp
+OBJS			= $(SRCS:.cpp=.o)
 
+CXX				= c++
+RM				= rm -f
+CXXFLAGS		= -Wall -Wextra -Werror  -std=c++98 -I.
 
-.cpp.o:
-	g++ -c $< -o $@
-	
-$(NAME): $(OBJ)
-	c++ $(CFLAGS) -o $(OBJ) -I$(INCLUDES) $(NAME)
+NAME			= PhoneBook
 
-all: $(NAME)
+.cpp .o:
+	$(CXX) $(CXXFLAGS) $(SRCS) -o $@
+all:			$(NAME)
 
-fclean:
-	rm -f $(NAME) $(OBJ)
-	@echo "Cleaned"
+$(NAME):		$(OBJS)
+				$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJS)
 
-clean: 
-	rm -f $(OBJ)
-	@echo "Cleaned *.o"
+clean:
+				$(RM) $(OBJS)
 
-re: fclean all
+fclean:			clean
+				$(RM) $(NAME)
 
-PHONY: all clean fclean
+re:				fclean $(NAME)
+
+.PHONY:			all clean fclean re
