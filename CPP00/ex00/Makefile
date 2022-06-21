@@ -1,24 +1,22 @@
 NAME = megaphone
+SRCSDIR = .
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 SRCS = megaphone.cpp
-OBJ = $(SRCS:.cpp=.o)
-
-
-.cpp.o:
-	g++ -c $< -o $@
 	
-$(NAME): $(OBJ)
-	c++ $(CFLAGS) -o $(OBJ) $(NAME)
+$(NAME): $(SRCSDIR)/$(SRCS)
+	@echo "Compiling... $@"
+	@g++ $(CFLAGS) -o $@ $^
+	@echo "Done."
 
 all: $(NAME)
 
-fclean:
-	rm -f $(NAME) $(OBJ)
-	@echo "Cleaned"
+fclean: clean
+	@rm -f $(NAME)
+	@echo "Everything is ready to compile."
 
 clean: 
-	rm -f $(OBJ)
-	@echo "Cleaned *.o"
+	@rm -f *.o
+	@echo "Cleaned *.o files."
 
 re: fclean all
 
