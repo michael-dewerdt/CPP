@@ -2,10 +2,11 @@
 
 int main(void)
 {
-    PhoneBook 	Phonebook;
+    PhoneBook 	phonebook;
     Contact 	contact;
 
-    int        	i;
+    std::string	index;
+	int			i;
     int     	nb_of_contact;
     std::string input;
 
@@ -20,13 +21,13 @@ int main(void)
         std::cin>>input;
         if (input == "ADD")
         {
-            if(PhoneBook.full == 1)
+            if(phonebook.full == 1)
             {
                 std::cout<<"You're PhoneBook is full, do you want to remplace the oldest contact ? (y/n)"<<std::endl;
                 std::cin>>input;
                 if (input == "y")
                     i = 0;
-                if (input == "n")
+                else if (input == "n")
                     continue;
                 std::cout<<"Please enter the first name: "<<std::endl;
                 contact.set_firstname();
@@ -38,27 +39,37 @@ int main(void)
                 contact.set_number();
                 std::cout<<"Please enter the darkest secret: "<<std::endl;
                 contact.set_darkestsecret();
-                Phonebook.add_contact(contact, i);
+                phonebook.add_contact(contact, i);
                 i++;
                 std::cout<<"contact added to the PhoneBook !"<<std::endl;
             }
         }
         else if (input == "SEARCH")
         {
-            Phonebook.display_all_contacts(i); //list of 4 columns: index, first name, last name and nickname.
+            phonebook.display_all_contacts(); //list of 4 columns: index, first name, last name and nickname.
             std::cout<<"Please enter the number of the contact you want the informations: "<<std::endl;
-            std::cin>>input;
-            while(input < "0" || input > "8")
-                std::cout<<"This contact does not exist"<<std::endl;
-            Phonebook.display_one_contact(input);
+			while(index[0] < '0' || index[0] > '8')
+            	{
+					std::cin>>index;
+					if (index[0] < '0' || index[0] > '8')
+                		std::cout<<"This contact does not exist"<<std::endl;
+				}
+			phonebook.display_one_contact(i);
         }
-        else if (input != "SEARCH" || input != "ADD" || input != "EXIT")
+        else if (input != "SEARCH" && input != "ADD" && input != "EXIT")
             std::cout<<"This command does not exist, try ADD, SEARCH or EXIT."<<std::endl;
     }
     std::cout<< "PhoneBook OFF." << std::endl;
     return (0);
 }
+
+
+
 /*
+
+input.c_str() 
+
+
 • SEARCH:
 ◦ Each column must be 10 characters wide. A pipe character (’|’) separates
 them. The text must be right-aligned. If the text is longer than the column,

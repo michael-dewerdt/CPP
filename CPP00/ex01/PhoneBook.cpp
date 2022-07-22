@@ -2,8 +2,6 @@
 
 PhoneBook::PhoneBook(void)
 {
-    for (int i = 0; i < 8; i++)
-        this->contact[i] = NULL;
     this->full = 0;
 }
 
