@@ -1,11 +1,60 @@
 #include "PhoneBook.hpp"
 
+void    display_all_contacts(PhoneBook Phonebook, int nb_of_contact);
+{
+    int i;
+    for (int i = 0; i < nb_of_contact; i++)
+    {
+        std::cout << std::setfill(' ') << std::setw(10) << i;
+	    std::cout << " | ";
+	    std::cout << std::setfill(' ') << std::setw(10) << Phonebook[i].firstname;
+	    std::cout << " | ";
+	    std::cout << std::setfill(' ') << std::setw(10) << Phonebook[i].lastname;
+	    std::cout << " | ";
+	    std::cout << std::setfill(' ') << std::setw(10) << Phonebook[i].nickname;
+	    std::cout << " |";
+	    std::cout << std::endl;
+    }
+	if (nb_of_contact == 0) {
+		std::cout << "No contact found" << std::endl;
+		return ;
+	}
+    return;
+}
+
+void    display_one_contact(Contact contact, int i)
+{
+	std::cout << "First name: " << contact[i].firstname << std::endl;
+	std::cout << "Last name: " << contact[i].lastname << std::endl;
+	std::cout << "Nickname: " << contact[i].nickname << std::endl;
+	std::cout << "Postal address: " << contact[i].address << std::endl;
+	std::cout << "Email address: " << contact[i].email << std::endl;
+	std::cout << "Phone number: " << contact[i].phonenumber << std::endl;
+	std::cout << "Darkest secret: " << contact[i].darkest_secret << std::endl;
+}
+
+Contact get_info(void)
+{
+    Contact contact;
+
+    std::cout<<"Please enter the first name: "<<std::endl;
+    getline(std::cin, contact.firstname);
+    std::cout<<"Please enter the last name: "<<std::endl;
+    getline(std::cin, contact.lastname);
+    std::cout<<"Please enter the nickname: "<<std::endl;
+    getline(std::cin, contact.nickname);
+    std::cout<<"Please enter the phone number: "<<std::endl;
+    getline(std::cin, contact.phonenumber);
+    std::cout<<"Please enter the darkest secret: "<<std::endl;
+    getline(std::cin, contact.darkestsecret);
+    return(contact);
+}
+
 int main(void)
 {
-    PhoneBook 	phonebook;
-    Contact 	contact;
+    Contact 	contact[8];
 
-    std::string	index;
+    int	index;
 	int			i;
     int     	nb_of_contact;
     std::string input;
@@ -16,48 +65,43 @@ int main(void)
     std::cout<<"- SEARCH: search a contact"<<std::endl;
     std::cout<<"- EXIT: exit the program"<<std::endl;
     nb_of_contact = 0;
+    i = 0;
     while (input != "EXIT")
     {
-        std::cin>>input;
+        getline(std::cin, input);
         if (input == "ADD")
         {
+            char answer;
             if(phonebook.full == 1)
             {
                 std::cout<<"You're PhoneBook is full, do you want to remplace the oldest contact ? (y/n)"<<std::endl;
-                std::cin>>input;
-                if (input == "y")
+                getline(std::cin, answer);
+                if (answer == "y")
                     i = 0;
-                else if (input == "n")
+                else
                     continue;
-                std::cout<<"Please enter the first name: "<<std::endl;
-                contact.set_firstname();
-                std::cout<<"Please enter the last name: "<<std::endl;
-                contact.set_lastname();
-                std::cout<<"Please enter the nickname: "<<std::endl;
-                contact.set_lastname();
-                std::cout<<"Please enter the phone number: "<<std::endl;
-                contact.set_number();
-                std::cout<<"Please enter the darkest secret: "<<std::endl;
-                contact.set_darkestsecret();
-                phonebook.add_contact(contact, i);
-                i++;
+            }
+            else
+            {
+                contact[i++] = get_info();
                 std::cout<<"contact added to the PhoneBook !"<<std::endl;
             }
         }
         else if (input == "SEARCH")
         {
-            phonebook.display_all_contacts(); //list of 4 columns: index, first name, last name and nickname.
+            display_all_contacts(friends, nb_of_contact); //list of 4 columns: index, first name, last name and nickname.
             std::cout<<"Please enter the number of the contact you want the informations: "<<std::endl;
-			while(index[0] < '0' || index[0] > '8')
+            getline(std::cin, index);
+            while(index < 0 || index > 8)
             	{
-					std::cin>>index;
-					if (index[0] < '0' || index[0] > '8')
-                		std::cout<<"This contact does not exist"<<std::endl;
+                	std::cout<<"This contact does not exist. Enter the right number."<<std::endl;
+					getline(std::cin, index);
 				}
-			phonebook.display_one_contact(i);
+			display_one_contact(friends[index]);
         }
         else if (input != "SEARCH" && input != "ADD" && input != "EXIT")
             std::cout<<"This command does not exist, try ADD, SEARCH or EXIT."<<std::endl;
+        std::cout<<"Please enter your command: "<<std::endl;
     }
     std::cout<< "PhoneBook OFF." << std::endl;
     return (0);
