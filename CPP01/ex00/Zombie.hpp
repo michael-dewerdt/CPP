@@ -1,7 +1,10 @@
 #ifndef ZOMBIE_HPP
 # define ZOMBIE_HPP
 
-Class Zombie
+#include <iostream>
+#include <string>
+
+class Zombie
 {
     public:
         Zombie(void);

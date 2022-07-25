@@ -20,7 +20,7 @@ void Contact::print_info(int i)
 	    std::cout << std::endl;
 }
 
-void    Contact::display_one_contact()
+void    Contact::display_one_contact(void)
 {
 	std::cout << "First name: " << this->firstname << std::endl;
 	std::cout << "Last name: " << this->lastname << std::endl;
@@ -28,5 +28,5 @@ void    Contact::display_one_contact()
 	std::cout << "Postal address: " << this->address << std::endl;
 	std::cout << "Email address: " << this->email << std::endl;
 	std::cout << "Phone number: " << this->phonenumber << std::endl;
-	std::cout << "Darkest secret: " << this->darkest_secret << std::endl;
+	std::cout << "Darkest secret: " << this->darkestsecret << std::endl;
 }

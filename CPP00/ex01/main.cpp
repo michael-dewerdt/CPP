@@ -1,14 +1,14 @@
-#include "PhoneBook.hpp"
+#include "Contact.hpp"
 
-void    display_all_contacts(Contact phonebook, int nb_of_contact);
+void    display_all_contacts(Contact *phonebook, int nb_of_contact)
 {
-    int i;
-    for (int i = 0; i < nb_of_contact; i++)
-        (phonebook[i]).print_info(i + 1);
-	if (nb_of_contact == 0) {
+	if (nb_of_contact == 0)
+	{
 		std::cout << "No contact found" << std::endl;
 		return ;
 	}
+    for (int i = 0; i < nb_of_contact; i++)
+        (phonebook[i]).print_info(i + 1);
     return;
 }
 
@@ -51,24 +51,28 @@ int main(void)
         if (input == "ADD")
         {
             char answer;
-            if(phonebook.full == 1)
-            {
+            if(nb_of_contact == 8)
+			{
                 std::cout<<"You're PhoneBook is full, do you want to remplace the oldest contact ? (y/n)"<<std::endl;
                 getline(std::cin, answer);
-                if (answer == "y")
-                    i = 0;
+                if (answer == 'y')
+				{
+                    i = nb_of_contact - i;
+					contact[i++] = get_info();
+				}
                 else
                     continue;
             }
             else
             {
                 contact[i++] = get_info();
+				nb_of_contact++;
                 std::cout<<"contact added to the PhoneBook !"<<std::endl;
             }
         }
         else if (input == "SEARCH")
         {
-            display_all_contacts(friends, nb_of_contact); //list of 4 columns: index, first name, last name and nickname.
+            display_all_contacts(contact, nb_of_contact); //list of 4 columns: index, first name, last name and nickname.
             std::cout<<"Please enter the number of the contact you want the informations: "<<std::endl;
             getline(std::cin, index);
             while(index < 0 || index > 8)
@@ -76,7 +80,7 @@ int main(void)
                 	std::cout<<"This contact does not exist. Enter the right number."<<std::endl;
 					getline(std::cin, index);
 				}
-			display_one_contact(friends[index]);
+			display_one_contact(contact[index]);
         }
         else if (input != "SEARCH" && input != "ADD" && input != "EXIT")
             std::cout<<"This command does not exist, try ADD, SEARCH or EXIT."<<std::endl;
