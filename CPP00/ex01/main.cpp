@@ -1,36 +1,15 @@
 #include "PhoneBook.hpp"
 
-void    display_all_contacts(PhoneBook Phonebook, int nb_of_contact);
+void    display_all_contacts(Contact phonebook, int nb_of_contact);
 {
     int i;
     for (int i = 0; i < nb_of_contact; i++)
-    {
-        std::cout << std::setfill(' ') << std::setw(10) << i;
-	    std::cout << " | ";
-	    std::cout << std::setfill(' ') << std::setw(10) << Phonebook[i].firstname;
-	    std::cout << " | ";
-	    std::cout << std::setfill(' ') << std::setw(10) << Phonebook[i].lastname;
-	    std::cout << " | ";
-	    std::cout << std::setfill(' ') << std::setw(10) << Phonebook[i].nickname;
-	    std::cout << " |";
-	    std::cout << std::endl;
-    }
+        (phonebook[i]).print_info(i + 1);
 	if (nb_of_contact == 0) {
 		std::cout << "No contact found" << std::endl;
 		return ;
 	}
     return;
-}
-
-void    display_one_contact(Contact contact, int i)
-{
-	std::cout << "First name: " << contact[i].firstname << std::endl;
-	std::cout << "Last name: " << contact[i].lastname << std::endl;
-	std::cout << "Nickname: " << contact[i].nickname << std::endl;
-	std::cout << "Postal address: " << contact[i].address << std::endl;
-	std::cout << "Email address: " << contact[i].email << std::endl;
-	std::cout << "Phone number: " << contact[i].phonenumber << std::endl;
-	std::cout << "Darkest secret: " << contact[i].darkest_secret << std::endl;
 }
 
 Contact get_info(void)
@@ -52,9 +31,9 @@ Contact get_info(void)
 
 int main(void)
 {
-    Contact 	contact[8];
+    Contact 	contact[7];
 
-    int	index;
+    int	        index;
 	int			i;
     int     	nb_of_contact;
     std::string input;

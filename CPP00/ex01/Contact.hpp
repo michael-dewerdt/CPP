@@ -9,6 +9,8 @@ class Contact
 
 		Contact(void);
 		~Contact(void);
+        void print_info(int i);
+        void display_one_contact(void);
 	
     private:
         std::string firstname;
