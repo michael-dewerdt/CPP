@@ -1,7 +1,7 @@
 NAME = sed
 SRCSDIR = .
 CFLAGS = -Wall -Wextra -Werror -std=c++98
-SRCS = main.cpp sed.cpp
+SRCS = main.cpp
 	
 $(NAME): $(SRCSDIR)/$(SRCS)
 	@echo "Compiling... $@"
