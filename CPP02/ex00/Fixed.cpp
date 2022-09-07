@@ -7,7 +7,7 @@ Fixed::Fixed(): nb(0)
 
 Fixed::~Fixed()
 {
-	std::cout << "Default destructor called" << std::endl;
+	std::cout << "Destructor called" << std::endl;
 }
 
 Fixed::Fixed(const Fixed & src)
@@ -19,7 +19,7 @@ Fixed::Fixed(const Fixed & src)
 Fixed& Fixed::operator=(const Fixed& other) {
 	std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &other)
-		nb = other.nb;
+		nb = other.getRawBits();
 	return *this;
 }
 
