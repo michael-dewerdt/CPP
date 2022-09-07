@@ -24,41 +24,37 @@ int main(int argc, char **argv)
 	const std::string	s1 = argv[2];
 	const std::string	s2 = argv[3];
 	std::string			buffer;
-	std::string			tmp;
 	std::ifstream		infile;
 	std::ofstream		outfile;
 
-	if (argc != 4)
+	if (argc == 4)
 	{
-		std::cout << "wrong number of arguments" << std::endl;
-		return (0);
-	}
-	infile.open(argv[1]);
-	if (infile.is_open() == true)
-	{
-		outfile.open(filename + ".replace", std::ios::out | std::ios::trunc ); //Any contents that existed in the file before it is open are discarded.
-		if (outfile.is_open() == true)
+		infile.open(argv[1]);
+		if (infile.is_open() == true)
 		{
-			while (std::getline(infile, buffer))
+			outfile.open(filename + ".replace", std::ios::out | std::ios::trunc ); //Any contents that existed in the file before it is open are discarded.
+			if (outfile.is_open() == true)
 			{
-				tmp += buffer;
-				if (infile.peek() != EOF)
-					break;
+				while (std::getline(infile, buffer))
+				{		
+					buffer = my_replace(buffer, s1, s2);
+					outfile << buffer;
+					outfile << "\n";
+				}
+				outfile.close();
 			}
-			std::cout << tmp << std::endl;
-			//buffer = my_replace(buffer, s1, s2);
-			//outfile << buffer;
-			outfile.close();
+			else
+			{
+				std::cout << "Can't open the output file stream" << std::endl;
+				infile.close();
+				return (EXIT_FAILURE);
+			}
+			infile.close();
 		}
 		else
-		{
-			std::cout << "Can't open the output file stream" << std::endl;
-			infile.close();
-			return (EXIT_FAILURE);
-		}
-		infile.close();
+			std::cout << "Outfile not created or truncated." << std::endl;
 	}
 	else
-		std::cout << "Outfile not created or truncated." << std::endl;
+		std::cout << "wrong number of arguments" << std::endl;
 	return (0);
 }
