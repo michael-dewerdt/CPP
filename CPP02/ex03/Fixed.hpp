@@ -36,7 +36,7 @@ class Fixed
 		static Fixed min(int &first_nb, int &second_nb);
 		static Fixed &min(int const &first_nb, int const &second_nb);
 		static const Fixed &max(const Fixed &first_nb, const Fixed &second_nb);
-		static const Fixed &max(int const &first_nb, int const &second_nb);
+		static const Fixed max(int &first_nb, int &second_nb);
 
 	private:
 		int	nb;

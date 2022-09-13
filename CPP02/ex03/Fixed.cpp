@@ -128,30 +128,29 @@ int		Fixed::toInt(void) const
 }
 
 
-const Fixed	&min(Fixed const &a, Fixed const &b)
+const Fixed	&min(Fixed const &first_nb, Fixed const &second_nb)
 {
-	if (a.toFloat() < b.toFloat())
-		return (a);
-	return (b);
+	tmp* = new Fixed(min(first_nb.toFloat(), second_nb.toFloat()));
+	return (tmp);
 }
 
 const Fixed	&max(Fixed const &a, Fixed const &b)
 {
-	if (a.toFloat() > b.toFloat())
+	if (a > b)
 		return (a);
 	return (b);
 }
 
-Fixed &min(Fixed &a, Fixed &b)
+Fixed min(Fixed &a, Fixed &b)
 {
-	if (a.toFloat() < b.toFloat())
+	if (a < b)
 		return (a);
 	return (b);
 }
 
-Fixed &max(Fixed &a, Fixed &b)
+Fixed max(Fixed &a, Fixed &b)
 {
-	if (a.toFloat > b.toFloat)
+	if (a > b)
 		return (a);
 	return (b);
 }
