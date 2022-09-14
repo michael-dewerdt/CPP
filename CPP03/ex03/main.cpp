@@ -6,7 +6,7 @@ int main(void)
     Claptrap    first("XxX-Master-of-Archer-xXx");
     Scavtrap    second("Bouftou");
     FragTrap    third("Tofu");
-
+    DiamondTrap fourth("El Diamento");
     first.attack("Bouftou");
     second.takeDamage(first.getAttackDamage());
     second.beRepaired(1);

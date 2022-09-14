@@ -41,22 +41,12 @@ void beRepaired(unsigned int amount)
     std::cout << "ClapTrap " << this->_name << "heals himself for " << amount << " hit points !" << std::endl;
 }
 
-std::string	ClapTrap::getName() const
-{
-	return(_name);
-}
+std::string	ClapTrap::getName() const {return(_name);}
+int	    ClapTrap::getHitPoints() const{return (_hitPoints);}
+int	    ClapTrap::getEnergyPoints() const {return (_energyPoints);}
+int     ClapTrap::getAttackDamage() const {return (_attackDamage);}
+void	ClapTrap::setName(std::string name) const {*this->name = name;}
 
-int	ClapTrap::getHitPoints() const
-{
-	return (_hitPoints);
-}
-
-int	ClapTrap::getEnergyPoints() const
-{
-	return (_energyPoints);
-}
-
-int	ClapTrap::getAttackDamage() const
-{
-	return (_attackDamage);
-}
+void	ClapTrap::setHitPoints(int nb) const {*this->_hitPoints = nb;}
+void	ClapTrap::setEnergyPoints(int nb) const {*this->_energyPoints = nb;}
+void	ClapTrap::setAttackDamage(int nb) const {*this->_attackDamaghe = nb;}

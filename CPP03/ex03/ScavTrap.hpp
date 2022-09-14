@@ -1,5 +1,5 @@
-#ifndef FRAGTRAP_HPP
-#define FRAGTRAP_HPP
+#ifndef SCAVTRAP_HPP
+#define SCAVTRAP_HPP
 
 #include "ClapTrap.hpp"
 #include <iostream>
@@ -8,14 +8,14 @@
 
 using namespace std;
 
-class FragTrap : public ClapTrap
+class ScavTrap : public ClapTrap
 {
     public:
-        FragTrap(std::string name);
-        ~FragTrap(void);
-        FragTrap(FragTrap const & rhs);
-        FragTrap &operator=(FragTrap const & rhs);
-        void HighFivesGuys();
+        ScavTrap(std::string name);
+        ~ScavTrap(void);
+        ScavTrap(ScavTrap const & rhs);
+        ScavTrap &operator=(ScavTrap const & rhs);
+        void guardGate();
 
     private:
         const std::string name;

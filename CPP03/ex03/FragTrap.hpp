@@ -16,11 +16,13 @@ class FragTrap : public ClapTrap
         FragTrap(FragTrap const & rhs);
         FragTrap &operator=(FragTrap const & rhs);
         void HighFivesGuys();
+        void whoAmI();
 
     private:
-        const std::string name;
-        int energy_points;
-        int attack_damage;
+        const std::string _name;
+        int _energyPoints;
+        int _attackDamage;
+        int _hitPoints;
 }
 
 std::ostream &operator<<(std::ostream &cout, const Point &instance);
