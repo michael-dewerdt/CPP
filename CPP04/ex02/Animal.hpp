@@ -1,27 +1,25 @@
 #ifndef ANIMAL_HPP
-#define ANIMAP_HPP
+#define ANIMAL_HPP
 
-#include "Animal.hpp"
 #include <iostream>
 #include <cmath>
 
 using namespace std;
 
-class   Animal
+class   AAnimal
 {
     public:
         Animal(void);
         Animal(std::string type);
-        Animal(Animal const rhs);
-        ~Animal(void);
+        virtual ~Animal(void);
         std::ostream &operator=(Animal const &rhs);
         std::string getType();
         std::string setType();
-        void    makeSound();
+        virtual void    makeSound() = 0;
 
     protected:
-        std::string _type;
-}
+        std::string type;
+};
 
 std::ostream &operator<<(std::ostream &cout, const Point &instance);
 

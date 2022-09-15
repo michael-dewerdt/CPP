@@ -4,9 +4,15 @@ Dog::Dog(void)
 {
     std::cout << "Dog constructor called." << std::endl;
     *this->type = "Dog";
+    *this->ideas = new Brain();
 }
-Dog::Dog(std::string type) : type(type) {}
-Dog::~Dog(void) {std::cout << "Dog destructor called." << std::endl;}
+Dog::Dog(std::string type) : type(type), ideas(new Brain()) {}
+
+Dog::~Dog(void) 
+{
+    std::cout << "Dog destructor called." << std::endl;
+    delete *this->ideas;
+}
 
 Dog &Dog::operator=(Dog const &rhs)
 {

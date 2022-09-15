@@ -35,3 +35,12 @@ void	DiamondTrap::whoAmI()
 {
 	cout<<"Diamond Name is : "<<this->name << " ClapTrap name is : " << this->getName() << endl;
 }
+
+DiamondTrap &operator=(DiamondTrap const & rhs)
+{
+	cout<<"DiamondTrap Copy constructor called"<<endl;
+	this->setName(rhs::getName());
+	this->setEnergyPoints(rhs::getHitPoints());
+	this->setHitPoints(rhs::getEnergyPoints());
+	this->setAttackDamage(rhs::getAttackDamage());
+}

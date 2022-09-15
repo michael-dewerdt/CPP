@@ -1,5 +1,5 @@
-#ifndef ANIMAL_HPP
-#define ANIMAP_HPP
+#ifndef DOG_HPP
+#define DOG_HPP
 
 #include "Animal.hpp"
 #include <iostream>
@@ -7,21 +7,23 @@
 
 using namespace std;
 
-class   Animal
+class   Dog: public Animal
 {
     public:
-        Animal(void);
-        Animal(std::string type);
-        Animal(Animal const rhs);
-        ~Animal(void);
-        std::ostream &operator=(Animal const &rhs);
+        Dog(void);
+        Dog(std::string type);
+        ~Dog(void);
+        std::ostream &operator=(Dog const &rhs);
         std::string getType();
         std::string setType();
         void    makeSound();
 
     protected:
-        std::string _type;
-}
+        std::string type;
+
+    private:
+        std::string ideas[100];
+};
 
 std::ostream &operator<<(std::ostream &cout, const Point &instance);
 

@@ -1,7 +1,6 @@
 #ifndef ANIMAL_HPP
-#define ANIMAP_HPP
+#define ANIMAL_HPP
 
-#include "Animal.hpp"
 #include <iostream>
 #include <cmath>
 
@@ -12,7 +11,6 @@ class   Animal
     public:
         Animal(void);
         Animal(std::string type);
-        Animal(Animal const rhs);
         ~Animal(void);
         std::ostream &operator=(Animal const &rhs);
         std::string getType();
@@ -20,8 +18,8 @@ class   Animal
         void    makeSound();
 
     protected:
-        std::string _type;
-}
+        std::string type;
+};
 
 std::ostream &operator<<(std::ostream &cout, const Point &instance);
 

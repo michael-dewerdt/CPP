@@ -2,7 +2,6 @@
 
 Animal(void){std::cout << "Animal constructor called." << std::endl;}
 Animal(std::string type) : type(type) {}
-Animal(Animal const rhs){ *this = rhs;}
 ~Animal(void) {std::cout << "Animal destructor called." << std::endl;}
 
 Animal &Animal::operator=(Animal const &rhs)
