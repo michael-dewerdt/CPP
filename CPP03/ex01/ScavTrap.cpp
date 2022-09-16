@@ -1,8 +1,13 @@
-#include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
+
+ScavTrap::ScavTrap(void)
+{
+    std::cout << "ScavTrap default constructor called" << std::endl;
+}
 
 ScavTrap::ScavTrap(std::string name)
 {
-    std::cout << "ScavTrap default constructor called" << std::endl;
+    std::cout << "ScavTrap w/name constructor called" << std::endl;
 }
 
 ScavTrap::~ScavTrap(void)
@@ -26,22 +31,22 @@ ScavTrap &ScavTrap::operator=(ScavTrap const & rhs)
     return *this;
 }
 
-void attack(const std::string& target)
+void ScavTrap::attack(const std::string& target)
 {
-    std::cout << "ScavTrap " << this->_name << "attacks " << target << ": (-" << this->attackDamage << ")" << std::endl;
-    this->energyPoints--;
+    std::cout << "ScavTrap " << this->_name << "attacks " << target << ": (-" << this->_attackDamage << ")" << std::endl;
+    this->_energyPoints--;
 }
-void takeDamage(unsigned int amount)
+void ScavTrap::takeDamage(unsigned int amount)
 {
     std::cout << "ScavTrap " << this->_name << "took " << amount << " damage !" << std::endl;
 }
 
-void beRepaired(unsigned int amount)
+void ScavTrap::beRepaired(unsigned int amount)
 {
     std::cout << "ScavTrap " << this->_name << "heals himself for " << amount << " hit points !" << std::endl;
 }
 
-void guardGate(void)
+void ScavTrap::guardGate(void)
 {
     std::cout << "ScavTrap " << this->_name << "entered the GUARD DATE MODE !!!" << std::endl;
 }

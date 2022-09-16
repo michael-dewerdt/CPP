@@ -3,8 +3,8 @@
 
 int main(void)
 {
-    Claptrap    first("XxX-Master-of-Archer-xXx");
-    Scavtrap    leboss("BOSS");
+    ClapTrap    first("XxX-Master-of-Archer-xXx");
+    ScavTrap    leboss("BOSS");
 
     first.attack("Bouftou");
     leboss.takeDamage(1);

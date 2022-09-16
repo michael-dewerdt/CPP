@@ -17,11 +17,18 @@ class ClapTrap
         void    attack(const std::string &target);
         void    takeDamage(unsigned int amount);
         void    beRepaired(unsigned int amount);
+		std::string getName() const;
+		int	getHitPoints() const;
+		int getEnergyPoints() const;
+		int getAttackDamage() const;
 
     private:
-        const std::string name;
-        int energy_points;
-        int attack_damage;
-}
+        const std::string _name;
+        int _energyPoints;
+        int _attackDamage;
+		int _hitPoints;
+};
 
-std::ostream &operator<<(std::ostream &cout, const Point &instance);
+std::ostream &operator<<(std::ostream &cout, const ClapTrap &instance);
+
+#endif

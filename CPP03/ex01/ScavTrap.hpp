@@ -11,6 +11,7 @@ using namespace std;
 class ScavTrap : public ClapTrap
 {
     public:
+		ScavTrap(void);
         ScavTrap(std::string name);
         ~ScavTrap(void);
         ScavTrap(ScavTrap const & rhs);
@@ -18,9 +19,12 @@ class ScavTrap : public ClapTrap
         void guardGate();
 
     private:
-        const std::string name;
-        int energy_points;
-        int attack_damage;
-}
+        const std::string _name;
+        int _energyPoints;
+        int _attackDamage;
+		int _hitPoints;
+};
 
-std::ostream &operator<<(std::ostream &cout, const Point &instance);
+std::ostream &operator<<(std::ostream &cout, const ScavTrap &instance);
+
+#endif

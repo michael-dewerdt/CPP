@@ -26,17 +26,22 @@ ClapTrap &ClapTrap::operator=(ClapTrap const & rhs)
     return *this;
 }
 
-void attack(const std::string& target)
+std::string ClapTrap::getName() const {return _name;} 
+int ClapTrap::getHitPoints() const {return _hitPoints;} 
+int ClapTrap::getAttackDamage() const {return _attackDamage;} 
+int ClapTrap::getEnergyPoints() const {return _energyPoints;}
+
+void ClapTrap::attack(const std::string& target)
 {
-    std::cout << "ClapTrap " << this->_name << "attacks " << target << ": (-" << this->attackDamage << ")" << std::endl;
-    this->energyPoints--;
+    std::cout << "ClapTrap " << this->_name << "attacks " << target << ": (-" << this->_attackDamage << ")" << std::endl;
+    this->_energyPoints--;
 }
-void takeDamage(unsigned int amount)
+void ClapTrap::takeDamage(unsigned int amount)
 {
     std::cout << "ClapTrap " << this->_name << "took " << amount << " damage !" << std::endl;
 }
 
-void beRepaired(unsigned int amount)
+void ClapTrap::beRepaired(unsigned int amount)
 {
     std::cout << "ClapTrap " << this->_name << "heals himself for " << amount << " hit points !" << std::endl;
 }
