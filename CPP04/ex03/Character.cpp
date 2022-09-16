@@ -2,7 +2,15 @@
 
 Character(void){std::cout << "Character constructor called." << std::endl;}
 Character(std::string const & name) : _name(name) {}
-virtual ~Character(void) {std::cout << "Character destructor called." << std::endl;}
+virtual ~Character(void)
+{
+	for (int i = 0; i < this->_inventory_size; i++)
+	{
+		if (this->_inventory[i])
+			delete this->_inventory[i];
+	}
+	std::cout << "Character destructor called." << std::endl;
+}
 
 Character &Character::operator=(Character const &rhs)
 {
@@ -14,7 +22,7 @@ Character &Character::operator=(Character const &rhs)
 			delete this->_inventory[i];
 		this->_inventory[i] = rhs._inventory[i];
 		if (rhs._inventory[i])
-			this->_number_equipped++;
+			this->_materia_equipped++;
 	}
 	std::cout << "Assignement operator for Character called" << std::endl;
 	return *this;

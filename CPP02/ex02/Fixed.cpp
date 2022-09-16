@@ -105,6 +105,14 @@ Fixed	&Fixed::operator--(void)
 	return *this;
 }
 
+Fixed	Fixed::operator++( int )
+{
+	Fixed	old(*this);
+
+	++(*this);
+	return (old);
+}
+
 int Fixed::getRawBits() const
 {
 	//std::cout << "getRawBits member function called" << std::endl;
@@ -151,7 +159,7 @@ Fixed &min(Fixed &a, Fixed &b)
 
 Fixed &max(Fixed &a, Fixed &b)
 {
-	if (a.toFloat > b.toFloat)
+	if (a.toFloat() > b.toFloat())
 		return (a);
 	return (b);
 }

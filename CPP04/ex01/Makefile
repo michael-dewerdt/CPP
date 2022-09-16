@@ -1,11 +1,11 @@
-NAME = 
+NAME = a.out
 SRCSDIR = .
 CFLAGS = -Wall -Wextra -Werror -std=c++98
-SRCS = main.cpp 
+SRCS = main.cpp Animal.cpp Brain.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp
 	
 $(NAME): $(SRCSDIR)/$(SRCS)
 	@echo "Compiling... $@"
-	@g++ $(CFLAGS) -o $@ $^
+	@g++-7 $(CFLAGS) -o $@ $^
 	@echo "Done."
 
 all: $(NAME)
